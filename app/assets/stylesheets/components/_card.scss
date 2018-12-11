@@ -1,0 +1,88 @@
+.pending {
+  border: solid 2px #74E8E8;
+  background-color: #74E8E8
+}
+
+
+.accepted {
+  border: solid 2px #FF385C;
+  background-color: #FF385C
+}
+
+.no-events {
+  border: solid 2px white;
+  background-color: white;
+  color: #74E8E8;
+}
+
+
+.card {
+  border-radius: 12px;
+  width: 90vw;
+  height: 25vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  resize: vertical;
+  overflow: auto;
+  -webkit-box-shadow: 4px 4px 20px 0px rgba(227,223,227,1);
+  -moz-box-shadow: 4px 4px 20px 0px rgba(227,223,227,1);
+  box-shadow: 4px 4px 20px 0px rgba(227,223,227,1);
+}
+
+.date, .interest {
+  text-align: left;
+  color: white;
+  border-radius: 12px;
+  width: 20vh;
+  padding-left: 4px;
+}
+
+
+.date p, .interest p {
+ margin-top: 4px;
+ margin-bottom: 4px;
+ font-style: italic;
+}
+
+.date {
+  position: absolute;
+  top: -4px;
+  left: -2px;
+  z-index: 1;
+}
+
+.interest {
+  position: absolute;
+  bottom: -4px;
+  left: -2px;
+  z-index: 1;
+}
+.countdown h5 {
+  margin-bottom: 4px;
+  font-style: italic;
+  color: #FF385C;
+}
+
+.backdrop-button {
+  background-size: cover !important;
+  width: 85vw;
+  height: 20vh;
+  border-radius: 12px;
+  border: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  resize: vertical;
+  overflow: auto;
+  position: relative;
+}
+
+.accept-title h5 {
+  margin-bottom: 4px;
+  font-style: italic;
+  color: grey;
+}
