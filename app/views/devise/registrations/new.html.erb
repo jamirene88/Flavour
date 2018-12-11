@@ -13,6 +13,7 @@
                 autofocus: true ,
                 input_html: { autocomplete: "age" }%>
     <%= f.input :gender,
+                collection: User::GENDERS,
                 required: true,
                 autofocus: true ,
                 input_html: { autocomplete: "gender" }%>
