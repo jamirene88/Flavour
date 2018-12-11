@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def dashboard
+    @events = current_user.meal_events
   end
 
   def edit
