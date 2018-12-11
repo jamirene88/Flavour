@@ -17,8 +17,8 @@ class User < ApplicationRecord
   has_many :user_interests
   has_many :interests, through: :user_interests
   # Dietary Preferences
-  has_may :user_cuisines
-  has_may :cuisines, through: :user_cuisines
+  has_many :user_cuisines
+  has_many :cuisines, through: :user_cuisines
 
   # Contacts
   has_many :user_contacts
