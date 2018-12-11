@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "Cleaning up database..."
+User.destroy_all
+
 
 users = [{
   first_name: "Bradly",
@@ -36,3 +39,5 @@ users.each do |user|
   u.remote_photo_url = user[:photo]  if user.key?(:photo)
   u.save
 end
+
+puts "Created #{User.count} New Users"
