@@ -6,10 +6,9 @@ Rails.application.routes.draw do
     # user routes
 
     get "/dashboard", to: "users#dashboard", as: "dashboard"
-    get "/edit_profile", to: "users#edit", as: "edit_profile"
     patch "/dashboard", to: "users#update"
-    get "/user/upload_picture", to: "users#upload_picture", as: "upload_picture"
-    get "/meal_events/:meal_id/attendees/:user_id/resquest_contact", to: "users#resquest_contact", as: "resquest_contact"
+    get "/edit", to: "users#edit", as: "edit_profile"
+    get "/meal_events/:meal_id/attendees/:user_id/request_contact", to: "users#request_contact", as: "resquest_contact"
 
     # user_interest routes
 
@@ -32,7 +31,7 @@ Rails.application.routes.draw do
 
     patch "/contacts", to: "user_contacts#update"
     delete "/contacts/:id", to: "user_contacts#destroy"
-    create "/contacts", to: "user_contacts#create"
+    post "/contacts", to: "user_contacts#create"
 
     # meal_events routes
 
