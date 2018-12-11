@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 2018_12_11_131820) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
-    t.integer "gender"
+    t.string "gender"
     t.integer "age"
     t.string "photo"
     t.bigint "city_id"
