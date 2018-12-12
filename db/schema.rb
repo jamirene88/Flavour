@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_12_144806) do
+ActiveRecord::Schema.define(version: 2018_12_12_170155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,15 +43,11 @@ ActiveRecord::Schema.define(version: 2018_12_12_144806) do
 
   create_table "meal_availabilities", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "meal_event_id"
-    t.bigint "city_id"
     t.string "status"
     t.boolean "plus_one"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city_id"], name: "index_meal_availabilities_on_city_id"
-    t.index ["meal_event_id"], name: "index_meal_availabilities_on_meal_event_id"
     t.index ["user_id"], name: "index_meal_availabilities_on_user_id"
   end
 
@@ -151,8 +147,6 @@ ActiveRecord::Schema.define(version: 2018_12_12_144806) do
   end
 
   add_foreign_key "cities", "countries"
-  add_foreign_key "meal_availabilities", "cities"
-  add_foreign_key "meal_availabilities", "meal_events"
   add_foreign_key "meal_availabilities", "users"
   add_foreign_key "meal_availability_locations", "cities"
   add_foreign_key "meal_availability_locations", "meal_availabilities"
