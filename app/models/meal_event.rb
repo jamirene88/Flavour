@@ -4,6 +4,4 @@ class MealEvent < ApplicationRecord
 
   has_many :meal_availabilities
   has_many :users, through: :meal_availabilities
-
-
 end
