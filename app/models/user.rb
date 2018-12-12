@@ -30,4 +30,5 @@ class User < ApplicationRecord
   def country
     city.country
   end
+
 end

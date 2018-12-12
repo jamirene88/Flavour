@@ -166,7 +166,6 @@ users.each do |user|
   UserCity.create!(user: u, city: City.find_by(name: "Lisboa"))
 end
 
-
 puts "Created #{User.count} New Users and #{UserCity.count}"
 
 puts "----------------Seeding User_Interests--------------------"
@@ -179,8 +178,6 @@ puts "Created #{UserInterest.count} New Users"
 
 puts "----------------Seeding User_Interests--------------------"
 
-User.all.each do |u|
-end
 
 puts "Created #{UserInterest.count} New Users"
 
