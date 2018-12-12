@@ -1,0 +1,12 @@
+<% date = locals[:date] %>
+<li class="calendar-day">
+  <div>
+    <%= date.date %>
+    <%= date.user.first_name %>
+    <%= date.plus_one ? "One Place" : "Two Places" %>
+    <%= date.status %>
+  </div>
+  <div>
+   # add toggle
+  </div>
+</li>

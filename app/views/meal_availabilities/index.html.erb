@@ -1,1 +1,7 @@
 <h1>This is a index of dates</h1>
+<ul>
+<% @dates.each do |date| %>
+<%= render "shared/day", locals: {date: date } %>
+<% end %>
+</ul>
+
