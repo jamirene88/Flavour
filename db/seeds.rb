@@ -7,7 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Cleaning up database..."
 User.destroy_all
+Interest.destroy_all
 
+interests = Interest.create([{ name: "Entertainment" }, { name: "Fitness" },
+  { name: "Humor" }, { name: "Video Games" }, { name: "Books" }, { name: "Politics" },
+  { name: "Sports" }, { name: "Travel" }, { name: "Games & Puzzles" }])
+
+puts "Created #{Interest.count} New interests"
 
 users = [{
   first_name: "Bradly",
