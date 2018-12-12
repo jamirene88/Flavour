@@ -26,4 +26,5 @@ class User < ApplicationRecord
   # Location
   has_one :city
   has_one :country, through: :city
+
 end
