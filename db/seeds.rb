@@ -17,26 +17,23 @@ puts "--------------------------------------------"
 puts "----------------Seeding Countries and Cities--------------------"
 
 Country.create!(name: "Portugal")
-Country.create!(name: "USA")
+Country.create!(name: "United States")
 Country.create!(name: "Canada");
-Country.create!(name: "UK")
+Country.create!(name: "United Kingdom")
 Country.create!(name: "Ireland")
 
-City.create!(country: Country.find_by(name:"Portugal"), name:"Lisboa")
+City.create!(country: Country.find_by(name:"Portugal"), name:"Greater Lisbon")
 City.create!(country: Country.find_by(name:"Portugal"), name:"Porto")
-City.create!(country: Country.find_by(name:"Portugal"), name:"Coimbra")
 
-City.create!(country: Country.find_by(name:"USA"), name:"New York")
-City.create!(country: Country.find_by(name:"USA"), name:"Chicago")
-City.create!(country: Country.find_by(name:"USA"), name:"Dallas")
+City.create!(country: Country.find_by(name:"United States"), name:"New York City")
+City.create!(country: Country.find_by(name:"United States"), name:"Chicago")
+City.create!(country: Country.find_by(name:"United States"), name:"Dallas")
 
-City.create!(country: Country.find_by(name:"UK"), name:"Yorkshire")
-City.create!(country: Country.find_by(name:"UK"), name:"London")
-City.create!(country: Country.find_by(name:"UK"), name:"Liverpool")
+City.create!(country: Country.find_by(name:"United Kingdom"), name:"Yorkshire")
+City.create!(country: Country.find_by(name:"United Kingdom"), name:"London")
+City.create!(country: Country.find_by(name:"United Kingdom"), name:"Liverpool")
 
 City.create!(country: Country.find_by(name:"Ireland"), name:"Dublin")
-City.create!(country: Country.find_by(name:"Ireland"), name:"Cork")
-City.create!(country: Country.find_by(name:"Ireland"), name:"Sligo")
 
 City.create!(country: Country.find_by(name:"Canada"), name:"Toronto")
 City.create!(country: Country.find_by(name:"Canada"), name:"Vancouver")
@@ -45,6 +42,7 @@ City.create!(country: Country.find_by(name:"Canada"), name:"Ottawa")
 puts "Created #{Country.count} and #{City.count}"
 
 puts "----------------Seeding Interests--------------------"
+
 interests = Interest.create!([{ name: "Entertainment" }, { name: "Fitness" },
   { name: "Humor" }, { name: "Video Games" }, { name: "Books" }, { name: "Politics" },
   { name: "Sports" }, { name: "Travel" }, { name: "Games & Puzzles" }])
@@ -180,4 +178,5 @@ puts "----------------Seeding User_Interests--------------------"
 
 
 puts "Created #{UserInterest.count} New Users"
+
 
