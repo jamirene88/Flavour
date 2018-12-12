@@ -9,9 +9,11 @@ City.destroy_all
 Country.destroy_all
 
 User.destroy_all
-
+MealAvailability.destroy_all
+MealEvent.destroy_all
+Restaurant.destroy_all
 Interest.destroy_all
-
+Restaurant.destroy_all
 puts "--------------------------------------------"
 
 puts "----------------Seeding Countries and Cities--------------------"
@@ -174,9 +176,47 @@ end
 
 puts "Created #{UserInterest.count} New User interests"
 
-puts "----------------Seeding User_Interests--------------------"
 
+puts "----------------Seeding Restaurant--------------------"
 
-puts "Created #{UserInterest.count} New Users"
+restaurants = [{
+  name: "restaurant-a"
+},{
+  name: "restaurant-b"
+},{
+  name: "restaurant-c"
+}]
 
+Restaurant.create!(restaurants)
+puts "Created #{Restaurant.count} New Restaurants"
 
+date = Date.tomorrow + 14
+
+puts "----------------Seeding meal_events--------------------"
+2.times do
+  MealEvent.create!(interest: Interest.first, restaurant: Restaurant.all.sample, reservation_date: date, reservation_time: Time.now.strftime("%I:%M:%S"))
+end
+puts "Created #{MealEvent.count} New Meal Events"
+puts "----------------Seeding meal_availabilities--------------------"
+  User.all.each do |user|
+    city = user.city
+    status = "Applied"
+    plus_one = false;
+    2.times do
+      availabilities_date = Date.tomorrow + 14 + rand(1..20)
+      MealAvailability.create!(user: user, status: status, date: availabilities_date, plus_one: plus_one)
+      MealAvailabilityLocation.create!(meal_availability: MealAvailability.last, city: city)
+    end
+  end
+
+puts "Created #{MealAvailability.count} meal availabilities and #{MealAvailabilityLocation.count}"
+
+# User.all do |user|
+#     city = user.city
+#     status = "Invited"
+#     plus_one = false;
+#     MealAvailability.create!(user: user, status: status, date: date, plus_one: plus_one)
+#     MealAvailabilityLocation.create!(meal_availability: MealAvailability.last, city: city)
+# end
+# puts "----------------Setting first 8 meal_avaliabilities--------------------"
+# puts "Created #{MealAvailability.count} meal availabilities and #{MealAvailabilityLocation.count}"
