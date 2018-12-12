@@ -1,19 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 puts "Cleaning up database..."
-User.destroy_all
-Interest.destroy_all
+City.destroy_all
+Country.destroy_all
 
-interests = Interest.create([{ name: "Entertainment" }, { name: "Fitness" },
+UserInterest.destroy_all
+User.destroy_all
+
+Interest.destroy_all
+puts "----------------Seeding Interests--------------------"
+interests = Interest.create!([{ name: "Entertainment" }, { name: "Fitness" },
   { name: "Humor" }, { name: "Video Games" }, { name: "Books" }, { name: "Politics" },
   { name: "Sports" }, { name: "Travel" }, { name: "Games & Puzzles" }])
 
 puts "Created #{Interest.count} New interests"
+
+
+puts "----------------Seeding Users--------------------"
 
 users = [{
   first_name: "Bradly",
@@ -43,7 +44,47 @@ users = [{
 users.each do |user|
   u = User.new(user)
   u.remote_photo_url = user[:photo]  if user.key?(:photo)
-  u.save
+  u.save!
 end
 
 puts "Created #{User.count} New Users"
+
+puts "----------------Seeding User_Interests--------------------"
+
+User.all.each do |u|
+  Interest.all.each { |i| UserInterest.create!(user: u, interest: i) }
+end
+
+puts "Created #{UserInterest.count} New Users"
+
+puts "----------------Seeding Countries and Cities--------------------"
+
+Country.create!(name: "Portugal")
+Country.create!(name: "USA")
+Country.create!(name: "Canada");
+Country.create!(name: "UK")
+Country.create!(name: "Ireland")
+
+City.create!(country: Country.find_by(name:"Portugal"), name:"Lisbon")
+City.create!(country: Country.find_by(name:"Portugal"), name:"Porto")
+City.create!(country: Country.find_by(name:"Portugal"), name:"Coimbra")
+
+City.create!(country: Country.find_by(name:"USA"), name:"New York")
+City.create!(country: Country.find_by(name:"USA"), name:"Chicago")
+City.create!(country: Country.find_by(name:"USA"), name:"Dallas")
+
+City.create!(country: Country.find_by(name:"UK"), name:"Yorkshire")
+City.create!(country: Country.find_by(name:"UK"), name:"London")
+City.create!(country: Country.find_by(name:"UK"), name:"Liverpool")
+
+City.create!(country: Country.find_by(name:"Ireland"), name:"Dublin")
+City.create!(country: Country.find_by(name:"Ireland"), name:"Cork")
+City.create!(country: Country.find_by(name:"Ireland"), name:"Sligo")
+
+City.create!(country: Country.find_by(name:"Canada"), name:"Toronto")
+City.create!(country: Country.find_by(name:"Canada"), name:"Vancouver")
+City.create!(country: Country.find_by(name:"Canada"), name:"Ottawa")
+
+puts "Created #{Country.count} and #{City.count}"
+
+

@@ -1,5 +1,5 @@
 class Country < ApplicationRecord
   has_many :cities
 
-  validate :name, presence: true, blank: false
+  validates :name, presence: true, blank: false
 end

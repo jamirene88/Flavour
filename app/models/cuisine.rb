@@ -5,5 +5,5 @@ class Cuisine < ApplicationRecord
   has_many :restaurant_cuisines
   has_many :restaurants, through: :restaurant_cuisines
 
-  validate :name, presence: true, blank: false
+  validates :name, presence: true, blank: false
 end

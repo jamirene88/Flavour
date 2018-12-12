@@ -5,5 +5,5 @@ class MealAvailability < ApplicationRecord
   belongs_to :meal_event
   belongs_to :city
 
-  validate :status, inclusion: { in: STATUS }
+  validates :status, inclusion: { in: STATUS }
 end
