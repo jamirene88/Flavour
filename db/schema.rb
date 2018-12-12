@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_12_130856) do
+ActiveRecord::Schema.define(version: 2018_12_12_144806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 2018_12_12_130856) do
     t.index ["user_id"], name: "index_meal_availabilities_on_user_id"
   end
 
+  create_table "meal_availability_locations", force: :cascade do |t|
+    t.bigint "meal_availability_id"
+    t.bigint "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_meal_availability_locations_on_city_id"
+    t.index ["meal_availability_id"], name: "index_meal_availability_locations_on_meal_availability_id"
+  end
+
   create_table "meal_events", force: :cascade do |t|
     t.bigint "interest_id"
     t.date "reservation_date"
@@ -86,6 +95,15 @@ ActiveRecord::Schema.define(version: 2018_12_12_130856) do
     t.integer "zomato_restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_cities", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_user_cities_on_city_id"
+    t.index ["user_id"], name: "index_user_cities_on_user_id"
   end
 
   create_table "user_contacts", force: :cascade do |t|
@@ -128,8 +146,6 @@ ActiveRecord::Schema.define(version: 2018_12_12_130856) do
     t.string "gender"
     t.integer "age"
     t.string "photo"
-    t.bigint "city_id"
-    t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -138,14 +154,17 @@ ActiveRecord::Schema.define(version: 2018_12_12_130856) do
   add_foreign_key "meal_availabilities", "cities"
   add_foreign_key "meal_availabilities", "meal_events"
   add_foreign_key "meal_availabilities", "users"
+  add_foreign_key "meal_availability_locations", "cities"
+  add_foreign_key "meal_availability_locations", "meal_availabilities"
   add_foreign_key "meal_events", "interests"
   add_foreign_key "meal_events", "restaurants"
   add_foreign_key "restaurant_cuisines", "cuisines"
   add_foreign_key "restaurant_cuisines", "restaurants"
+  add_foreign_key "user_cities", "cities"
+  add_foreign_key "user_cities", "users"
   add_foreign_key "user_contacts", "users"
   add_foreign_key "user_cuisines", "cuisines"
   add_foreign_key "user_cuisines", "users"
   add_foreign_key "user_interests", "interests"
   add_foreign_key "user_interests", "users"
-  add_foreign_key "users", "cities"
 end
