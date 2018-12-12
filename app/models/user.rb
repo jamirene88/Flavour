@@ -24,7 +24,11 @@ class User < ApplicationRecord
   has_many :user_contacts
 
   # Location
-  has_one :city
-  has_one :country, through: :city
+  has_one :user_city
+  has_one :city, through: :user_city
+
+  def country
+    city.country
+  end
 
 end
