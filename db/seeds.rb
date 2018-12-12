@@ -55,7 +55,7 @@ User.all.each do |u|
   Interest.all.each { |i| UserInterest.create!(user: u, interest: i) }
 end
 
-puts "Created #{UserInterest.count} New Users"
+puts "Created #{UserInterest.count} New User interests"
 
 puts "----------------Seeding Countries and Cities--------------------"
 
