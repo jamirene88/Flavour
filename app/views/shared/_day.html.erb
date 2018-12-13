@@ -1,0 +1,12 @@
+<% date = locals[:date] %>
+<li class="calendar-day">
+  <div>
+    <p> Date: <%= date.date %></p>
+    <p> First Name: <%= date.user.first_name %></p>
+    <p>Reserved Seats: <%= date.plus_one ? 2 : 1 %> </p>
+    <p>Event Status: <%=date.status %> </p>
+  </div>
+  <div>
+   # add toggle
+  </div>
+</li>
